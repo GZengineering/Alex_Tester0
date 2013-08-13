@@ -1,3 +1,4 @@
+//Macro Chip functions and variables
 
 #define UART1_TX_FUNCTION			3						//Define output Peripheral Pin Select function
 
@@ -8,8 +9,8 @@
 #define CHARGE_EN_PMOS_TRIS			TRISBbits.TRISB10
 #define CHARGE_EN_PMOS_BIT			PORTBbits.RB10
 
-#define DISCHARGE_EN_PMOS_TRIS			TRISAbits.TRISA2
-#define DISCHARGE_EN_PMOS_BIT			PORTAbits.RA2
+#define DISCHARGE_EN_PMOS_TRIS			TRISAbits.TRISA2		
+#define DISCHARGE_EN_PMOS_BIT			PORTAbits.RA2				
 
 #define VSHUNT_CHARGE_AMP_TRIS				TRISBbits.TRISB14
 #define VSHUNT_CHARGE_AMP_ADC_EN_BIT		AD1PCFGbits.PCFG10		//Corresponding Analog port
@@ -34,7 +35,7 @@
 #define FCY   40000000L  //define your instruction frequency, FCY = FOSC/2
   
 #define CYCLES_PER_MS ((unsigned long)(FCY * 0.001))        //instruction cycles per millisecond
-#define CYCLES_PER_US ((unsigned long)(FCY * 0.000001))   //instruction cycles per microsecond
+#define CYCLES_PER_US ((unsigned long)(FCY * 0.000001))   	//instruction cycles per microsecond
 
 #define DELAY_MS(ms)  __delay32(CYCLES_PER_MS * ((unsigned long) ms));   //__delay32 is provided by the compiler, delay some # of milliseconds
 #define DELAY_US(us)  __delay32(CYCLES_PER_US * ((unsigned long) us));    //delay some number of microseconds
@@ -45,6 +46,7 @@ void ADC_Init (void);
 void UART_Init (void);
 void MEM_ADDR_Increment(void);
 
+//a word on the PIC24 is 24 bits. A char is 8 bits. A long is 24 bits? A full memory address will be 24 bits, broken into 3 chars.
 typedef struct {
   union  {
 	struct  {

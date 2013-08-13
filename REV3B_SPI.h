@@ -1,4 +1,4 @@
-
+//Flash memory functions header file
 
 #define SPI_TX_FUNCTION				7		//Define output Peripheral Pin Select function
 #define SPI_CLK_FUNCTION			8		//Define output Peripheral Pin Select function
@@ -29,4 +29,3 @@ unsigned int READ_BYTE(char address1,char address2,char address3);
 unsigned int READ_BYTE_AUTO(char state);
 void WRITE_ENABLE(void);
 void WRITE_BYTE(char address1,char address2,char address3, char data);
-

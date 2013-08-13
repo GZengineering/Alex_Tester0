@@ -1,9 +1,16 @@
+/**
+* Flash memory functions.  
+* These functions are used to interface with the flash memory unit on the device.
+* It 
+*/
 
 #include "p24FJ16GA002.h"
-//#include "p24FJ64GA102.h"
 #include "REV3B_SPI.h"
-//#include<stdio.h>
 
+/**
+* Initialize Flash Memory 
+*/
+/*
 void FLASH_MEM_Init (void)
 {
   //MISO
@@ -38,7 +45,13 @@ void FLASH_MEM_Init (void)
   SPI1STATbits.SPIEN 		= 1;	//Enables SPI module and configures SCKx,SDOx,SDIx and ~SSx as serial port pins
 
 }
+*/
 
+
+/**
+* 
+*/
+/*
 void UNBLOCK_MEMORY(void)
 {
   unsigned int temp;
@@ -62,7 +75,12 @@ void UNBLOCK_MEMORY(void)
   temp = SPI1BUF;
   FLASH_DISABLE_BIT = 1;				// Disable Flash Chip
 }
+*/
 
+/**
+* Memory ID?  get JEDEC_ID of Memory chip.
+*/
+/*
 void JEDEC_ID (void)
 {
   unsigned int temp;
@@ -85,9 +103,13 @@ void JEDEC_ID (void)
   temp = SPI1BUF;						//Read the data from the chip
   FLASH_DISABLE_BIT = 1;          		// Disable Flash Chip  	
   //printf("%x\n",temp);
-
 }
+*/
 
+/*
+* Get Manuf_ID of memory chip.
+*/
+/*
 unsigned int MANUF_ID(void)
 {
   //printf("In");
@@ -114,7 +136,12 @@ unsigned int MANUF_ID(void)
   //printf("%x\n",temp);
   return temp;
 }
+*/
 
+/**
+* Read the status register of the flash chip.
+*/
+/*
 void READ_STATUS_REG(void)
 {
   unsigned int temp;
@@ -128,9 +155,13 @@ void READ_STATUS_REG(void)
   temp = SPI1BUF;
   FLASH_DISABLE_BIT = 1;				// Disable Flash Chip
   //printf("%x\n",temp);
-
 }
+*/
 
+/**
+* Erase 4 kilobytes starting 
+*/
+/*
 void _4KBYTE_ERASE(char address1,char address2,char address3)
 {
   unsigned int temp;	  
@@ -153,16 +184,20 @@ void _4KBYTE_ERASE(char address1,char address2,char address3)
   FLASH_DISABLE_BIT = 1;				// Disable Flash Chip
   //printf("# 4KByte Sector Erased\n");
   for(temp =0;temp<5000;temp++);
-///
 }
+*/
 
+/**
+* Erase 32 kilobytes at the given address bits
+*/
+/*
 void _32KBYTE_ERASE(char address1,char address2,char address3)
 {
   unsigned int temp;	  
 ///Erase 32KBytes
   WRITE_ENABLE();
   //Erase Sector
-  FLASH_DISABLE_BIT = 0;				//Enable Flash Chip
+  FLASH_DISABLE_BIT = 0;	sss			//Enable Flash Chip
   SPI1BUF = 0x52;						//Erase the next 4KBytes
   while(SPI1STATbits.SPIRBF == 0);
   temp = SPI1BUF;
@@ -178,8 +213,13 @@ void _32KBYTE_ERASE(char address1,char address2,char address3)
   FLASH_DISABLE_BIT = 1;				// Disable Flash Chip
   //printf("# 32KByte Sector Erased\n");
   for(temp =0;temp<10000;temp++);
-///
 }
+*/
+
+/* 
+* Erase 64 kilobytes at the 
+*/
+/*
 void _64KBYTE_ERASE(char address1,char address2,char address3)
 {
   unsigned int temp;	  
@@ -202,9 +242,13 @@ void _64KBYTE_ERASE(char address1,char address2,char address3)
   FLASH_DISABLE_BIT = 1;				// Disable Flash Chip
   //printf("# 64KByte Sector Erased\n");
   for(temp =0;temp<10000;temp++);
-///
 }
+*/
 
+/**
+* Clear the data on the flash chip
+*/
+/*
 void CHIP_ERASE(void)
 {
   unsigned int temp;
@@ -212,7 +256,7 @@ void CHIP_ERASE(void)
   WRITE_ENABLE();
   for(temp =0;temp<100;temp++);
   //Erase Chip
-  FLASH_DISABLE_BIT = 0;
+  FLASH_DISABLE_BIT = 0;				//Enable Flash Chip
   SPI1BUF = 0x60;						//Chip Erase Command
   while(SPI1STATbits.SPIRBF == 0);
   temp = SPI1BUF;
@@ -220,8 +264,12 @@ void CHIP_ERASE(void)
 
   for(temp =0;temp<20000;temp++);	
 }
+*/
 
-
+/**
+* Read a byte from memory.
+*/
+/*
 unsigned int READ_BYTE(char address1,char address2,char address3)
 {
   unsigned int temp;
@@ -246,7 +294,12 @@ unsigned int READ_BYTE(char address1,char address2,char address3)
   //printf("%x\n",temp);
   return temp;
 }
+*/
 
+/**
+* 
+*/
+/*
 unsigned int READ_BYTE_AUTO(char state)
 {
   unsigned int temp;
@@ -275,7 +328,12 @@ unsigned int READ_BYTE_AUTO(char state)
   }
   return 0;
 }
+*/
 
+/**
+* Enable the chip to write to be able to write to memory.
+*/
+/*
 void WRITE_ENABLE(void)
 {
   unsigned int temp;
@@ -291,8 +349,12 @@ void WRITE_ENABLE(void)
   Nop();
   Nop();
 }
+*/
 
-//void WRITE_BYTE(void)
+/**
+* Write the given data to the given address
+*/
+/*
 void WRITE_BYTE(char address1,char address2,char address3, char data)
 {
   unsigned int temp;
@@ -316,10 +378,6 @@ void WRITE_BYTE(char address1,char address2,char address3, char data)
   while(SPI1STATbits.SPIRBF == 0);
   temp = SPI1BUF;
   FLASH_DISABLE_BIT = 1;				// Disable Flash Chip
-  //printf("ByteWritten\n");
-///
-  //Nop();
-  //Nop();
-
-
+  //printf("ByteWritten\n")
 }
+*/
