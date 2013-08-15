@@ -46,7 +46,7 @@ file_004=no
 file_005=no
 [FILE_INFO]
 file_000=Rev3B_SPI.c
-file_001=AmbientLight_WorkingCopy.c
+file_001=Tester_v0.c
 file_002=Rev3B.h
 file_003=REV3B_SPI.h
 file_004=C:\Program Files (x86)\Microchip\MPLAB C30\support\PIC24F\h\p24FJ16GA002.h

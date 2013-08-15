@@ -31,6 +31,9 @@
 #define VSUPPLY_EN_BIT				AD1PCFGbits.PCFG12		//Corresponding Analog port
 #define VSUPPLY_ADC_PIN 			0x0C
 
+#define INCOMING_UART_INPUT				U1STAbits.URXDA
+#define UART_INPUT						U1RXREG
+
 #define FCY   40000000L  //define your instruction frequency, FCY = FOSC/2
   
 #define CYCLES_PER_MS ((unsigned long)(FCY * 0.001))        //instruction cycles per millisecond
